@@ -1,0 +1,4 @@
+<h1 class= 'p-3'> Schedule a Tweet </h1>
+<%= button_to 'Connect a Twitter account', '/auth/twitter', data: {turbo: "false"}, method: :post, class:'visually-hidden', id:'primaryButton' %>
+
+<%= render 'form', tweet: @tweet %>

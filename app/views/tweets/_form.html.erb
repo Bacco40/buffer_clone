@@ -1,0 +1,27 @@
+<%= form_with model: @tweet, local: true do |form| %>
+
+    <%= render 'shared/form_errors', form: form %>
+
+    <div class='mb-3'>
+        <%= form.label :twitter_account_id %>
+        <div class = 'container align-items-center'>
+            <div class ='row gap-3'>
+                <%= form.collection_select :twitter_account_id, Current.user.twitter_accounts, :id, :username, {}, {class:'form-control col '}%>
+                <div class= 'btn btn-primary col-md-auto' onclick="document.getElementById('primaryButton').click()"> Connect a Twitter account </div>
+            </div>
+        </div>
+    </div>
+    <div class='mb-3'>
+        <%= form.label :body %>
+        <%= form.text_area :body, class: 'form-control' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.label :publish_at %>
+        <div class='form-control'>
+            <%= form.datetime_select :publish_at %>
+        </div>
+    </div>
+
+    <%= form.button 'Schedule' , class: 'btn btn-primary' %>
+    
+<% end %>

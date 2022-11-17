@@ -1,0 +1,30 @@
+<div class='container'>
+    <div class='mb-3 card'>
+        <% if tweet.published? %>
+            <div class="card-header text-bg-secondary"> 
+                Published!
+            </div>
+        <% else %>
+            <div class="card-header "> 
+                Scheduled for <%= l  tweet.publish_at, format: :short %>
+            </div>
+        <% end %>
+        <div class='d-flex flex-wrap align-items-center justify-content-between gap-3 card-body'>
+            <div class='d-flex align-items-center me-5 gap-3'>
+                <%= image_tag tweet.twitter_account.image, class:'rounded-circle'%>
+                <div class='d-flex flex-column gap-1'>
+                    <%= link_to "@#{tweet.twitter_account.username}", "https://twitter.com/#{tweet.twitter_account.username}", target: :_blank %>
+                    <%= tweet.body %>
+                </div>
+            </div>
+            <% if tweet.published? %>
+                <%= link_to 'View Tweet', "https://twitter.com/#{tweet.twitter_account.username}/status/#{tweet.tweet_id}", target: :_blank , class: 'btn btn-primary'%>
+            <% else %>
+                <div class='d-flex align-items-center gap-3 '>
+                    <%= link_to "Edit Tweet", edit_tweet_path(tweet), class: 'btn btn-primary' %>
+                    <%= button_to "Unschedule Tweet", tweet_path(tweet), method: :delete, data: {turbo_confirm: 'Are you Sure?'}, class: 'btn btn-danger' %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

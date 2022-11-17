@@ -1,0 +1,11 @@
+<h3>Password#reset</h3>
+
+<p>
+  Hi <%= @user %>,
+  someone requesed to reset your password, if this was you
+  reset your password from the link below, otherwise ignore this email
+</p>
+
+<%= link_to "Reset Password", password_reset_edit_url(token: @token) %>
+
+<p> The link will expire in 15 minutes. </p>

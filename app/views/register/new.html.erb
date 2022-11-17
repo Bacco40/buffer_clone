@@ -1,0 +1,22 @@
+<h1 class= 'p-3'> Sign up </h1>
+
+<%= form_with model: @user, url:sign_up_path do |form| %>
+
+    <%= render 'shared/form_errors', form: form %>
+
+    <div class='mb-3'>
+        <%= form.label :email, class:"form-label" %>
+        <%= form.text_field :email , class:'form-control', placeholder:'example@email.com' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.label :password , class:"form-label" %>
+        <%= form.password_field :password , class:'form-control', placeholder:'password' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.label 'confirm password' , class:"form-label" %>
+        <%= form.password_field :password_confirmation , class:'form-control', placeholder:'password' %>
+    </div>
+    <div class='mb-3'>
+        <%= form.submit 'Sign Up', class:'btn btn-primary' %>
+    </div>
+<% end %>

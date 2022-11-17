@@ -1,0 +1,10 @@
+Password#reset
+
+
+Hi <%= @user %>,
+someone requesed to reset your password, if this was you
+reset your password from the link below, otherwise ignore this email
+
+<%= password_reset_edit_url(token: @token) %>
+
+The link will expire in 15 minutes.
