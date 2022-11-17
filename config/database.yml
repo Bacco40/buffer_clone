@@ -83,4 +83,3 @@ production:
   <<: *default
   database: buffer_clone_production
   username: buffer_clone
-  password: <%= ENV["BUFFER_CLONE_DATABASE_PASSWORD"] %>
